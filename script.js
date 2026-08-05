@@ -224,7 +224,7 @@ async function main()
     const monsterData = [];
     const RARITY = getRarities();
     const MCLASS = getClasses();
-    const allowedRarities = [RARITY.COMMON, RARITY.ADULT, RARITY.MAJOR];
+    const allowedRarities = [RARITY.COMMON, RARITY.ADULT, RARITY.MAJOR, RARITY.TONAL];
     const monsters = await getMonsters();
 
     const commonMonsters = monsters
@@ -709,6 +709,22 @@ async function main()
                 showToast("Toggled Minor Paironormal forms");
                 toggleString = "Minor ";
             break;
+            case "tonal":
+                showToast("Toggled Tonal Dipster forms");
+                toggleString = "Tonal ";
+            break;
+            case "elemental":
+                showToast("Toggled Elemental Dipster forms");
+                toggleString = "Elemental ";
+            break;
+            case "royal":
+                showToast("Toggled Royal Dipster forms");
+                toggleString = "Royal ";
+            break;
+            case "astral":
+                showToast("Toggled Astral Dipster forms");
+                toggleString = "Astral ";
+            break;
 
             case "voidcorn":
                 if (!voidcorn)
@@ -757,7 +773,37 @@ async function main()
                 {
                     targetMonsters = monsters.filter((monster) => 
                             monster.name == monData.monster.name
-                                && monster.class != MCLASS.CELESTIAL);
+                                && monster.class != MCLASS.CELESTIAL
+                                    && monster.class != MCLASS.PAIRONORMAL
+                                        && monster.class != MCLASS.DIPSTER);
+                }
+                else if (trimmedVal == "tonal")
+                {
+                    targetMonsters = monsters.filter((monster) => 
+                            ((monster.identifier - 1) % 7) + 1 == monData.monster.identifier
+                                && monster.rarity == RARITY.TONAL
+                                    && monster.class == MCLASS.DIPSTER);
+                }
+                else if (trimmedVal == "elemental")
+                {
+                    targetMonsters = monsters.filter((monster) => 
+                            ((monster.identifier - 1) % 7) + 1 == monData.monster.identifier
+                                && monster.rarity == RARITY.ELEMENTAL
+                                    && monster.class == MCLASS.DIPSTER);
+                }
+                else if (trimmedVal == "royal")
+                {
+                    targetMonsters = monsters.filter((monster) => 
+                            ((monster.identifier - 1) % 7) + 1 == monData.monster.identifier
+                                && monster.rarity == RARITY.ROYAL
+                                    && monster.class == MCLASS.DIPSTER);
+                }
+                else if (trimmedVal == "astral")
+                {
+                    targetMonsters = monsters.filter((monster) => 
+                            ((monster.identifier - 1) % 7) + 1 == monData.monster.identifier
+                                && monster.rarity == RARITY.ASTRAL
+                                    && monster.class == MCLASS.DIPSTER);
                 }
                 else
                 {
