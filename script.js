@@ -388,7 +388,7 @@ async function main()
                 daBox = supernaturalBox;
                 break;
 
-            case MCLASS.WERDO: case MCLASS.SHUGAFAM: case MCLASS.LEGENDARY:
+            case MCLASS.WERDO: case MCLASS.SHUGAFAM: case MCLASS.BBSQUAD: case MCLASS.LEGENDARY:
                 daBox = legendaryBox;
                 break;
 
@@ -613,6 +613,7 @@ async function main()
         return str
             .normalize("NFD")                  // decompose accented characters
             .replace(/[\u0300-\u036f]/g, "")   // remove diacritical marks
+            .replace("$", "s")        // replace $ with s
             .replace(/[^a-z0-9]/gi, "")        // remove non alphanumeric characters
             .toLowerCase();                    // take a wild guess
     }
