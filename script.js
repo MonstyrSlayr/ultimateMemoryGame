@@ -735,9 +735,9 @@ async function main()
 
                     document.body.classList.add("voidcorn");
 
-                    const r = document.querySelector(':root');
-                    r.style.setProperty('--accent-color', '#222222');
-                    r.style.setProperty('--accent-color2', '#373737');
+                    const r = document.querySelector(":root");
+                    r.style.setProperty("--accent-color", "#222222");
+                    r.style.setProperty("--accent-color2", "#373737");
 
                     let currentReplacedMonData = null;
 
@@ -783,28 +783,32 @@ async function main()
                     targetMonsters = monsters.filter((monster) => 
                             ((monster.identifier - 1) % 7) + 1 == monData.monster.identifier
                                 && monster.rarity == RARITY.TONAL
-                                    && monster.class == MCLASS.DIPSTER);
+                                    && monster.class == MCLASS.DIPSTER
+                                        && monster.class == monData.monster.class);
                 }
                 else if (trimmedVal == "elemental")
                 {
                     targetMonsters = monsters.filter((monster) => 
                             ((monster.identifier - 1) % 7) + 1 == monData.monster.identifier
                                 && monster.rarity == RARITY.ELEMENTAL
-                                    && monster.class == MCLASS.DIPSTER);
+                                    && monster.class == MCLASS.DIPSTER
+                                        && monster.class == monData.monster.class);
                 }
                 else if (trimmedVal == "royal")
                 {
                     targetMonsters = monsters.filter((monster) => 
                             ((monster.identifier - 1) % 7) + 1 == monData.monster.identifier
                                 && monster.rarity == RARITY.ROYAL
-                                    && monster.class == MCLASS.DIPSTER);
+                                    && monster.class == MCLASS.DIPSTER
+                                        && monster.class == monData.monster.class);
                 }
                 else if (trimmedVal == "astral")
                 {
                     targetMonsters = monsters.filter((monster) => 
                             ((monster.identifier - 1) % 7) + 1 == monData.monster.identifier
                                 && monster.rarity == RARITY.ASTRAL
-                                    && monster.class == MCLASS.DIPSTER);
+                                    && monster.class == MCLASS.DIPSTER
+                                        && monster.class == monData.monster.class);
                 }
                 else
                 {
