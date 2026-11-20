@@ -1,4 +1,4 @@
-import { getRarities, getClasses, getMonsters } from "https://monstyrslayr.github.io/msmTools/monsters.js";
+import { getRarities, getClasses, getMonsters, getLegendaryClasses } from "https://monstyrslayr.github.io/msmTools/monsters.js";
 
 function showToast(message, duration = 3000)
 {
@@ -388,10 +388,6 @@ async function main()
                 daBox = supernaturalBox;
                 break;
 
-            case MCLASS.WERDO: case MCLASS.SHUGAFAM: case MCLASS.BBSQUAD: case MCLASS.LEGENDARY:
-                daBox = legendaryBox;
-                break;
-
             case MCLASS.CELESTIAL:
                 daBox = celestialBox;
                 break;
@@ -411,6 +407,11 @@ async function main()
             case MCLASS.PRIMORDIAL:
                 daBox = primordialBox;
                 break;
+        }
+
+        if (getLegendaryClasses().includes(mon.class))
+        {
+            daBox = legendaryBox;
         }
 
         daBox.addMonster(monData);
